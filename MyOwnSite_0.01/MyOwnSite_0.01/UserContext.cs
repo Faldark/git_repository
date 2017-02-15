@@ -12,7 +12,7 @@ namespace MyOwnSite_0._01
     {
         public DbSet<User> Users { get; set; }
 
-        //public System.Data.Entity.DbSet<MyOwnSite_0._01.Models.UserForm> UserForms { get; set; }
+        public System.Data.Entity.DbSet<MyOwnSite_0._01.Models.UserForm> UserForms { get; set; }
 
     }
 }
