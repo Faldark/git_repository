@@ -26,5 +26,10 @@ namespace MyOwnSite_0._01.BusinessLogic
                 return true;
             return false;
         }
+
+        public User FindUserByEmail(string email)
+        {
+            return UserDao.FindUserByEmail(email);
+        }
     }
 }

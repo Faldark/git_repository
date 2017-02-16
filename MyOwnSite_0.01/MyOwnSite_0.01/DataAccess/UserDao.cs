@@ -37,5 +37,15 @@ namespace MyOwnSite_0._01.DataAccess
 
             return user;
         }
+
+        public User FindUserByEmail(string email)
+        {
+            var databaseConnection = DbContext as UserContext;
+            var user = databaseConnection.Users.FirstOrDefault(n => n.Email == email);
+
+            return user;
+        }
+
+
     }
 }

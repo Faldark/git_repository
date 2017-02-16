@@ -12,5 +12,7 @@ namespace MyOwnSite_0._01.BusinessLogic
         User FindUserByLogin(string login);
 
         bool OnLoginValidate(User user);
+
+        User FindUserByEmail(string email);
     }
 }

@@ -11,5 +11,7 @@ namespace MyOwnSite_0._01.DataAccess
     public interface IUserDao
     {
         User FindUserByLogin(string login);
+
+        User FindUserByEmail(string email);
     }
 }

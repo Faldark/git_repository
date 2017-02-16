@@ -40,8 +40,11 @@ namespace MyOwnSite_0._01.Validators
             if (Dictionary.IsValidField("Name") && UserService.FindUserByLogin(form.Name) != null)
             {
                 //ModelStateDict.AddModelError("Name", "Login in use, try other one");
-                Dictionary.AddModelError("Name", "Login in use, try other one");
-                
+                Dictionary.AddModelError("Name", "Login is in use, try other one");
+            }
+            if (Dictionary.IsValidField("Email") && UserService.FindUserByEmail(form.Email) != null)
+            {
+                Dictionary.AddModelError("Email", "Email is in use, try other one");
             }
         }
 
