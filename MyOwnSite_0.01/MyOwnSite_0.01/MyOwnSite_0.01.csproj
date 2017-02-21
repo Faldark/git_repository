@@ -147,9 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="BusinessLogic\ILogic.cs" />
     <Compile Include="BusinessLogic\IUserService.cs" />
-    <Compile Include="BusinessLogic\Logic.cs" />
     <Compile Include="BusinessLogic\UserService.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />

@@ -15,24 +15,13 @@ namespace MyOwnSite_0._01.Controllers
 {
     public class UserController : Controller
     {
-        //
-        // GET: /User/
-        [Dependency]
-        public ILogic logic { get; set; }
-
+        
         [Dependency]
         public IUserService UserService { get; set; }
 
         [Dependency]
         public IValidator Validator { get; set; }
-
-
-        //public UserContext _context;
-
-        //public UserController(IUserContext context)
-        //{
-        //    _context = context as UserContext;
-        //}
+        
 
         [Dependency]
         public IUserContext Userctx { get; set; }
@@ -56,12 +45,8 @@ namespace MyOwnSite_0._01.Controllers
                 return RedirectToAction("Login", "User");
             }
             
-
-
             return View();
         }
-
-
 
         public ActionResult Login()
         {
@@ -69,7 +54,6 @@ namespace MyOwnSite_0._01.Controllers
         }
 
         [HttpPost]
-        
         [ValidateAntiForgeryToken]
         public ActionResult Login(User model)
         {
@@ -82,42 +66,25 @@ namespace MyOwnSite_0._01.Controllers
                 
             }
             return View();
-
-            //var result = UserService.FindUserByLogin(model.Name);
-            //string name = result.Name + "this is returned NAME";
-
-            //return name;
+            
         }
+
         [Authorize]
         public ActionResult Welcome(User model)
         {
             ViewBag.User = model.Name;
 
-            //var _context = Userctx as UserContext;
-            
-            //var name = (from d in _context.Users where d.Name == "Cindy" select d).Single();
-
-            //var result = name.Password;
-
-
-
-            
-           
-
             return View();
 
         }
 
-
-
+        
         public ActionResult LogOut()
         {
             Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "User");
         }
-
-
-
+        
     }
 }

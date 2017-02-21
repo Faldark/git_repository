@@ -17,16 +17,12 @@ namespace MyOwnSite_0._01.DataAccess
 {
     public class UserDao :IUserDao
     {
-
         
-
 
         [Dependency]
         public IUserContext DbContext { get; set; }
 
         
-
-
         public User FindUserByLogin(string login)
         {
             
