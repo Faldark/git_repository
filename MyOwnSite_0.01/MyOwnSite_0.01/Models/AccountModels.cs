@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.EnterpriseServices.Internal;
 
@@ -51,5 +52,11 @@ namespace MyOwnSite_0._01.Models
         [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+
+
+
     }
 }
