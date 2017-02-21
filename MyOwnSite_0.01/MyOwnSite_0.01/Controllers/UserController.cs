@@ -52,6 +52,8 @@ namespace MyOwnSite_0._01.Controllers
             if (ModelState.IsValid)
             {
                 UserService.Insert(model);
+                
+                return RedirectToAction("Login", "User");
             }
             
 
@@ -76,19 +78,20 @@ namespace MyOwnSite_0._01.Controllers
             if (result)
             {
                 FormsAuthentication.SetAuthCookie(model.Name,false);
-                return RedirectToAction("Welcome", "User");
+                return RedirectToAction("Welcome", "User", model);
+                
             }
-            return RedirectToAction("");
+            return View();
 
             //var result = UserService.FindUserByLogin(model.Name);
             //string name = result.Name + "this is returned NAME";
 
             //return name;
         }
-        //[Authorize]
-        public string Welcome()
+        [Authorize]
+        public ActionResult Welcome(User model)
         {
-            
+            ViewBag.User = model.Name;
 
             //var _context = Userctx as UserContext;
             
@@ -101,17 +104,17 @@ namespace MyOwnSite_0._01.Controllers
             
            
 
-            return logic.ShowMessage();
+            return View();
 
         }
 
 
 
-        public string LogOut()
+        public ActionResult LogOut()
         {
             Session.Clear();
             FormsAuthentication.SignOut();
-            return "Logout Is Completed";
+            return RedirectToAction("Login", "User");
         }
 
 

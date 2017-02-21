@@ -22,7 +22,7 @@ namespace MyOwnSite_0._01.BusinessLogic
         {
             var userFromDatabase = UserDao.FindUserByLogin(user.Name);
 
-            if (userFromDatabase.Password == user.Password)
+            if (userFromDatabase != null && userFromDatabase.Password == user.Password)
                 return true;
             return false;
         }
