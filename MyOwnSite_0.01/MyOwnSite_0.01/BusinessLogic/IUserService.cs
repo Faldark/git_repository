@@ -14,5 +14,7 @@ namespace MyOwnSite_0._01.BusinessLogic
         bool OnLoginValidate(User user);
 
         User FindUserByEmail(string email);
+
+        void Insert(UserForm userForm);
     }
 }

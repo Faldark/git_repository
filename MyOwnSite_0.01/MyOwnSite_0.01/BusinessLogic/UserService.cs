@@ -31,5 +31,11 @@ namespace MyOwnSite_0._01.BusinessLogic
         {
             return UserDao.FindUserByEmail(email);
         }
+
+        public void Insert(UserForm userForm)
+        {
+            UserDao.Insert(userForm);
+        }
+
     }
 }

@@ -48,6 +48,11 @@ namespace MyOwnSite_0._01.Controllers
             Validator.Dictionary = ModelState;
 
             Validator.Validate(model);
+
+            if (ModelState.IsValid)
+            {
+                UserService.Insert(model);
+            }
             
 
 

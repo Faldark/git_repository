@@ -30,22 +30,20 @@ namespace MyOwnSite_0._01.DataAccess
         public User FindUserByLogin(string login)
         {
             
-
-
-            var databaseConnection = DbContext as UserContext;
-            var user = databaseConnection.Users.FirstOrDefault(n => n.Name == login);
-
-            return user;
+            return DbContext.Users.FirstOrDefault(n => n.Name == login);
         }
 
         public User FindUserByEmail(string email)
         {
-            var databaseConnection = DbContext as UserContext;
-            var user = databaseConnection.Users.FirstOrDefault(n => n.Email == email);
 
-            return user;
+            return DbContext.Users.FirstOrDefault(n => n.Email == email);
         }
 
-
+        public void Insert(UserForm userform)
+        {
+            var user = new User() {Name = userform.Name, Email = userform.Email, Password = userform.Password};
+            DbContext.Users.Add(user);
+            DbContext.SaveChanges();
+        }
     }
 }
