@@ -19,7 +19,8 @@ namespace MyOwnSite_0._01.Models
         [StringLength(50)]
         public string Title { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(5000)]
+        [DataType(DataType.MultilineText)]
         public string Message { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }
@@ -43,7 +44,8 @@ namespace MyOwnSite_0._01.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(5000)]
+        [DataType(DataType.MultilineText)]
         public string Message { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }

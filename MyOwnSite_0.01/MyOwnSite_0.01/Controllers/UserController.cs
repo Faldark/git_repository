@@ -62,6 +62,8 @@ namespace MyOwnSite_0._01.Controllers
             if (result)
             {
                 FormsAuthentication.SetAuthCookie(model.Name,false);
+
+                
                 return RedirectToAction("Welcome", "User", model);
                 
             }
