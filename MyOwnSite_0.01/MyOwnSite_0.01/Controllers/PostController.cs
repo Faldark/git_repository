@@ -20,6 +20,19 @@ namespace MyOwnSite_0._01.Controllers
         public ActionResult Index()
         {
             var posts = db.Posts.Include(p => p.User);
+
+            //foreach (var post in posts)
+            //{
+            //    if (post.Message.Length > 50)
+            //    {
+            //        post.Message = post.Message.Substring(0, 50);
+            //    }
+
+                
+            //}
+
+
+
             return View(posts.ToList());
         }
 

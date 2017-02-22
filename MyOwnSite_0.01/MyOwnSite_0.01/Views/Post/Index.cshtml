@@ -35,9 +35,17 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Message)
+
+            @*@Html.Display("item.Message", item.Message);*@
+
+            @*@item.Message;*@
+            @*@item.Message.Length < 150 ? item.Message : item.Message.Substring(0,150);*@
+            @*@Html.DisplayFor(@modelItem => item.Message.Length < 180 ? item.Message : item.Message.Substring(0, 180));*@
+            @Html.DisplayFor(modelItem => item.Message.Substring(0,50))
         </td>
         <td>
+
+            
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
         <td>

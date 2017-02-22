@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Practices.Unity;
@@ -61,20 +62,23 @@ namespace MyOwnSite_0._01.Controllers
 
             if (result)
             {
-                FormsAuthentication.SetAuthCookie(model.Name,false);
 
-                
-                return RedirectToAction("Welcome", "User", model);
-                
+
+                FormsAuthentication.SetAuthCookie(model.Name, false);
+
+                return RedirectToRoute(new {controller = "User", action = "Welcome"});
+
+                //return RedirectToAction("Welcome", "User", model);
+
             }
             return View();
             
         }
 
         [Authorize]
-        public ActionResult Welcome(User model)
+        public ActionResult Welcome()
         {
-            ViewBag.User = model.Name;
+            ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
 
             return View();
 
