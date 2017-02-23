@@ -42,6 +42,24 @@
             @Html.DisplayFor(model => model.CreatedOn)
         </dd>
 
+        @if (Model.Comments != null)
+        {
+            //foreach (var comment in Model.Comments)
+            //{
+                @Html.Partial("Partial1", Model.Comments);
+  
+            //}
+        }
+
+        @*@Html.ActionLink("")
+
+
+        @Html.Partial("Partial2", Model);*@
+
+
+
+
+
     </dl>
 </div>
 <p>

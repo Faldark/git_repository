@@ -41,8 +41,13 @@ namespace MyOwnSite_0._01.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+
+            
+            container.RegisterType<IPostDao, PostDao>();
             container.RegisterType<IUserDao, UserDao>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IPostService, PostService>();
             container.RegisterType<IUserContext, UserContext>();
             container.RegisterType<IValidator, RegistrationValidator>();
         }

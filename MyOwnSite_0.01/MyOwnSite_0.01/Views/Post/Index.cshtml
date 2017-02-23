@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MyOwnSite_0._01.Models.Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Posts";
 }
 
-<h2>Index</h2>
+<h2>Posts</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Post", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,17 +35,11 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-
-            @*@Html.Display("item.Message", item.Message);*@
-
-            @*@item.Message;*@
-            @*@item.Message.Length < 150 ? item.Message : item.Message.Substring(0,150);*@
-            @*@Html.DisplayFor(@modelItem => item.Message.Length < 180 ? item.Message : item.Message.Substring(0, 180));*@
-            @Html.DisplayFor(modelItem => item.Message.Substring(0,50))
+            
+            @Html.DisplayFor(modelItem => item.Message)
         </td>
         <td>
 
-            
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
         <td>

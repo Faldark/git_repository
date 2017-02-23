@@ -6,44 +6,35 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.Practices.Unity;
 using MyOwnSite_0._01.Models;
 using MyOwnSite_0._01;
+using MyOwnSite_0._01.BusinessLogic;
 
 namespace MyOwnSite_0._01.Controllers
 {
     public class PostController : Controller
     {
+
+        [Dependency]
+
+        public IPostService PostService { get; set; }
+
         private UserContext db = new UserContext();
 
         // GET: /Post/
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.User);
+            var posts = PostService.ListMessageLimit();
 
-            //foreach (var post in posts)
-            //{
-            //    if (post.Message.Length > 50)
-            //    {
-            //        post.Message = post.Message.Substring(0, 50);
-            //    }
-
-                
-            //}
-
-
-
-            return View(posts.ToList());
+            return View(posts);
         }
 
         // GET: /Post/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
+            
+            Post post = PostService.Get(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -54,7 +45,6 @@ namespace MyOwnSite_0._01.Controllers
         // GET: /Post/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
