@@ -24,8 +24,6 @@ namespace MyOwnSite_0._01.Controllers
 
         public IUserService UserService { get; set; }
 
-        private UserContext db = new UserContext();
-
         // GET: /Post/
         public ActionResult Index()
         {
@@ -99,22 +97,20 @@ namespace MyOwnSite_0._01.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
+
+                PostService.Update(post);
+                
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", post.UserId);
             return View(post);
         }
 
         // GET: /Post/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
+            
+            Post post = PostService.Get(id);
+            
             if (post == null)
             {
                 return HttpNotFound();
@@ -127,19 +123,12 @@ namespace MyOwnSite_0._01.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
-            db.SaveChanges();
+            Post post = PostService.Get(id);
+
+            PostService.Delete(id);
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
-    }
 }

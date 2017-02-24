@@ -16,5 +16,9 @@ namespace MyOwnSite_0._01.DataAccess
 
         void Insert(Post post);
 
+        void Update(Post post);
+
+        void Delete(int id);
+
     }
 }

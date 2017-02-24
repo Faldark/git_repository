@@ -16,7 +16,9 @@ namespace MyOwnSite_0._01.BusinessLogic
 
         void Insert(Post post);
 
+        void Update(Post post);
 
+        void Delete(int id);
 
     }
 }

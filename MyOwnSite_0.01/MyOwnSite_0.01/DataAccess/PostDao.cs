@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations.Model;
 using System.Linq;
 using System.Web;
 using Microsoft.Practices.Unity;
@@ -31,6 +32,22 @@ namespace MyOwnSite_0._01.DataAccess
             post.CreatedOn = DateTime.Now;
             DbContext.Posts.Add(post);
             DbContext.SaveChanges();
+        }
+
+        public void Update(Post post)
+        {
+           DbContext.Entry(post).State = EntityState.Modified;
+            DbContext.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            Post post = Get(id);
+            if (post != null)
+            {
+                DbContext.Posts.Remove(post);
+                DbContext.SaveChanges();
+            }
         }
 
     }

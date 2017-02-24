@@ -43,5 +43,17 @@ namespace MyOwnSite_0._01.BusinessLogic
         {
             PostDao.Insert(post);
         }
+
+        public void Update(Post post)
+        {
+            PostDao.Update(post);
+        }
+
+        public void Delete(int id)
+        {
+            PostDao.Delete(id);
+        }
+
+
     }
 }
