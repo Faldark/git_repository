@@ -7,7 +7,7 @@ namespace MyOwnSite_0._01.Models
 {
     public class UserForm
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -35,7 +35,7 @@ namespace MyOwnSite_0._01.Models
 
     public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(50)]

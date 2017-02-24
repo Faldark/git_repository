@@ -17,7 +17,6 @@ namespace MyOwnSite_0._01.DataAccess
 
         public List<Post> List()
         {
-            //DbContext.Posts.Include(u => u.PostId).ToList()
             var posts = from s in DbContext.Posts select s;
             return posts.ToList();
         }
@@ -25,6 +24,13 @@ namespace MyOwnSite_0._01.DataAccess
         public Post Get(int id)
         {
             return DbContext.Posts.First(p => p.PostId == id);
+        }
+
+        public void Insert(Post post)
+        {
+            post.CreatedOn = DateTime.Now;
+            DbContext.Posts.Add(post);
+            DbContext.SaveChanges();
         }
 
     }

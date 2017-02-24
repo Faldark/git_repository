@@ -20,6 +20,10 @@ namespace MyOwnSite_0._01.Controllers
 
         public IPostService PostService { get; set; }
 
+        [Dependency]
+
+        public IUserService UserService { get; set; }
+
         private UserContext db = new UserContext();
 
         // GET: /Post/
@@ -57,38 +61,32 @@ namespace MyOwnSite_0._01.Controllers
         {
             if (ModelState.IsValid)
             {
-                post.CreatedOn = DateTime.Now;
                 
                 var name = System.Web.HttpContext.Current.User.Identity.Name;
 
-                var user = db.Users.FirstOrDefault(n => n.Name == name);
+                var user = UserService.FindUserByLogin(name);
 
-                var id = user.Id;
+                post.UserId = user.UserId;
 
-                post.Id = id;
-
-                db.Posts.Add(post);
-                db.SaveChanges();
+                PostService.Insert(post);
+                
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", post.Id);
             return View(post);
         }
 
         // GET: /Post/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
+
+            Post post = PostService.Get(id);
+            
             if (post == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", post.Id);
+            
             return View(post);
         }
 
@@ -97,7 +95,7 @@ namespace MyOwnSite_0._01.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="PostId,Id,Title,Message,CreatedOn")] Post post)
+        public ActionResult Edit([Bind(Include = "PostId,UserId,Title,Message,CreatedOn")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +103,7 @@ namespace MyOwnSite_0._01.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", post.Id);
+            ViewBag.Id = new SelectList(db.Users, "Id", "Name", post.UserId);
             return View(post);
         }
 

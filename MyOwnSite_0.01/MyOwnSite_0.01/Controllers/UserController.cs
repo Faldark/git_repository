@@ -23,11 +23,7 @@ namespace MyOwnSite_0._01.Controllers
         [Dependency]
         public IValidator Validator { get; set; }
         
-
-        [Dependency]
-        public IUserContext Userctx { get; set; }
-
-
+        
         public ActionResult Registration()
         {
             return View();

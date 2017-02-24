@@ -39,5 +39,9 @@ namespace MyOwnSite_0._01.BusinessLogic
             return PostDao.Get(id);
         }
 
+        public void Insert(Post post)
+        {
+            PostDao.Insert(post);
+        }
     }
 }

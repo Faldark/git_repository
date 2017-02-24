@@ -14,6 +14,9 @@ namespace MyOwnSite_0._01.BusinessLogic
 
         Post Get(int id);
 
+        void Insert(Post post);
+
+
 
     }
 }

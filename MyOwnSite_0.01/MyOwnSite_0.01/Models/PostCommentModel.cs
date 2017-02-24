@@ -13,7 +13,7 @@ namespace MyOwnSite_0._01.Models
         public int PostId { get; set; }
         [Required]
         [ForeignKey("User")]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -41,7 +41,7 @@ namespace MyOwnSite_0._01.Models
         public int PostId { get; set; }
         [Required]
         [ForeignKey("User")]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(5000)]
