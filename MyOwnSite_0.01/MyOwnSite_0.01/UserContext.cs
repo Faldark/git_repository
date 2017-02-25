@@ -19,10 +19,12 @@ namespace MyOwnSite_0._01
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Comment>().HasRequired<Post>(s => s.Post).WithMany(s => s.Comments).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Comment>().HasRequired<Post>(s => s.Post).WithMany(s => s.Comments).WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Comment>().HasRequired<User>(s => s.User).WithMany(s => s.Comments).WillCascadeOnDelete(false);
 
 
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
         }
         

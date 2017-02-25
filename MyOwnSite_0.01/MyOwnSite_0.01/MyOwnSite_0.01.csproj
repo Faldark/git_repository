@@ -147,6 +147,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="BusinessLogic\CommentService.cs" />
+    <Compile Include="BusinessLogic\ICommentService.cs" />
     <Compile Include="BusinessLogic\IPostService.cs" />
     <Compile Include="BusinessLogic\IUserService.cs" />
     <Compile Include="BusinessLogic\PostService.cs" />
@@ -154,6 +156,8 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
+    <Compile Include="DataAccess\CommentDao.cs" />
+    <Compile Include="DataAccess\ICommentDao.cs" />
     <Compile Include="DataAccess\IPostDao.cs" />
     <Compile Include="DataAccess\IUserDao.cs" />
     <Compile Include="DataAccess\IUserForm.cs" />
@@ -184,6 +188,9 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\Partial1.cshtml" />
     <Content Include="Views\Post\Partial2.cshtml" />
+    <Content Include="Views\Post\CreateComment.cshtml" />
+    <Content Include="Views\Post\DeleteComment.cshtml" />
+    <Content Include="Views\Post\EditComment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

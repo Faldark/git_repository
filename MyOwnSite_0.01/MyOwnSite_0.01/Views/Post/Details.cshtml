@@ -42,6 +42,10 @@
             @Html.DisplayFor(model => model.CreatedOn)
         </dd>
 
+        @Html.ActionLink("Create Comment", "CreateComment", new {id = Model.PostId})
+
+
+
         @if (Model.Comments != null)
         {
             //foreach (var comment in Model.Comments)

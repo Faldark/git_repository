@@ -22,6 +22,12 @@ namespace MyOwnSite_0._01.Controllers
 
         [Dependency]
 
+        public ICommentService CommentService { get; set; }
+
+
+
+        [Dependency]
+
         public IUserService UserService { get; set; }
 
         // GET: /Post/
@@ -130,5 +136,112 @@ namespace MyOwnSite_0._01.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult CreateComment(int id)
+        {
+            Comment model = new Comment {PostId = id};
+
+
+            return View(model);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComment([Bind(Include = "CommentId,PostId,Id,Title,Message")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var name = System.Web.HttpContext.Current.User.Identity.Name;
+
+                var user = UserService.FindUserByLogin(name);
+
+                comment.UserId = user.UserId;
+
+                CommentService.Insert(comment);
+
+                return RedirectToAction("Index");
+
+                ////Strange redirectToAction Behavior, need to investigate later
+                //return RedirectToAction("Details", comment.PostId);
+            }
+
+            return View(comment);
+        }
+
+        // GET: /Post/Delete/5
+        public ActionResult DeleteComment(int id)
+        {
+
+            Comment comment = CommentService.Get(id);
+
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: /Post/Delete/5
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCommentConfirmed(int id)
+        {
+            Comment post = CommentService.Get(id);
+
+            CommentService.Delete(id);
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+        // GET: /Post/Edit/5
+        public ActionResult EditComment(int id)
+        {
+
+            Comment comment = CommentService.Get(id);
+
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(comment);
+        }
+
+        // POST: /Post/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComment([Bind(Include = "CommentId,PostId,UserId,Title,Message,CreatedOn")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+
+                CommentService.Update(comment);
+
+                return RedirectToAction("Index");
+            }
+            return View(comment);
+        }
+
+
+
+     }
+
+    
+
+
+
+
+
+
+
+
+
 }

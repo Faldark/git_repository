@@ -3,13 +3,13 @@
 @*@model MyOwnSite_0._01.Models.User*@
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Post.Title)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.User.Name)
         </th>
@@ -24,9 +24,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Post.Title)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.User.Name)
         </td>
@@ -37,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentId })
+            @Html.ActionLink("Edit", "EditComment", new { id=item.CommentId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.CommentId }) |*@
+            @Html.ActionLink("Delete", "DeleteComment", new { id=item.CommentId })
         </td>
     </tr>
 }
