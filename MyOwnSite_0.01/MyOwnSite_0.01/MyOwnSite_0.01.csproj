@@ -148,11 +148,14 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="BusinessLogic\CommentService.cs" />
+    <Compile Include="BusinessLogic\ExportService.cs" />
     <Compile Include="BusinessLogic\ICommentService.cs" />
+    <Compile Include="BusinessLogic\IExportService.cs" />
     <Compile Include="BusinessLogic\IPostService.cs" />
     <Compile Include="BusinessLogic\IUserService.cs" />
     <Compile Include="BusinessLogic\PostService.cs" />
     <Compile Include="BusinessLogic\UserService.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
@@ -163,6 +166,7 @@
     <Compile Include="DataAccess\IUserForm.cs" />
     <Compile Include="DataAccess\PostDao.cs" />
     <Compile Include="DataAccess\UserDao.cs" />
+    <Compile Include="ExcelExport\ExcelExportParams.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +195,7 @@
     <Content Include="Views\Post\CreateComment.cshtml" />
     <Content Include="Views\Post\DeleteComment.cshtml" />
     <Content Include="Views\Post\EditComment.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
