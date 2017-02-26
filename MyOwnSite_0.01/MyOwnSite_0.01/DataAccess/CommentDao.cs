@@ -65,7 +65,8 @@ namespace MyOwnSite_0._01.DataAccess
             }
             else 
             {
-                var comments = from s in DbContext.Comments select s;
+                var comments = from s in DbContext.Comments select s ;                          
+                          
 
                
                 return comments.ToList();
