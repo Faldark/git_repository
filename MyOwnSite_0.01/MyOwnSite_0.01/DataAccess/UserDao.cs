@@ -29,6 +29,11 @@ namespace MyOwnSite_0._01.DataAccess
             return DbContext.Users.FirstOrDefault(n => n.Name == login);
         }
 
+        public User FindUserById(int id)
+        {
+            return DbContext.Users.FirstOrDefault(n => n.UserId == id);
+        }
+
         public User FindUserByEmail(string email)
         {
 

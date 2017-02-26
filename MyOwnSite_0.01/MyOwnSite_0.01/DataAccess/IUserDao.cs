@@ -12,6 +12,8 @@ namespace MyOwnSite_0._01.DataAccess
     {
         User FindUserByLogin(string login);
 
+        User FindUserById(int id);
+
         User FindUserByEmail(string email);
 
         void Insert(UserForm userForm);

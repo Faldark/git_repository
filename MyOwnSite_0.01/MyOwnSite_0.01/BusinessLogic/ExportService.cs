@@ -7,11 +7,16 @@ using System.Runtime.CompilerServices;
 using System.Web;
 using Microsoft.Practices.Unity;
 using MyOwnSite_0._01.ExcelExport;
+using MyOwnSite_0._01.Models;
 
 namespace MyOwnSite_0._01.BusinessLogic
 {
     public class ExportService :IExportService
     {
+
+        [Microsoft.Practices.Unity.Dependency]
+        public IUserService UserService { get; set; }
+
         [Microsoft.Practices.Unity.Dependency]
         public IPostService PostService { get; set; }
         [Microsoft.Practices.Unity.Dependency]
@@ -21,7 +26,8 @@ namespace MyOwnSite_0._01.BusinessLogic
         public IEnumerable Export(NameValueCollection parameters)
         {
             var exportParameters = ExtractParams(parameters);
-            return CollectData(exportParameters);
+            
+            return CollectData(exportParameters); ;
         }
 
         private ExcelExportParams ExtractParams(NameValueCollection parameters)
@@ -56,7 +62,7 @@ namespace MyOwnSite_0._01.BusinessLogic
             {
                 return CommentService.GetCommentsByUser(parameters.UserId);
             }
-            else
+            else 
             {
                  return PostService.GetPostsByUser(parameters.UserId);
             }

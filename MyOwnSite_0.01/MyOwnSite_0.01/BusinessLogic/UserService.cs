@@ -18,6 +18,11 @@ namespace MyOwnSite_0._01.BusinessLogic
             return UserDao.FindUserByLogin(login);
         }
 
+        public User FindUserById(int id)
+        {
+            return UserDao.FindUserById(id);
+        }
+
         public bool OnLoginValidate(User user)
         {
             var userFromDatabase = UserDao.FindUserByLogin(user.Name);
