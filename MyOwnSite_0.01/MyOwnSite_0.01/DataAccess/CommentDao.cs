@@ -54,5 +54,22 @@ namespace MyOwnSite_0._01.DataAccess
             }
         }
 
+        public List<Comment> GetCommentsByUser(int id)
+        {
+            
+            if (id != 0)
+            {
+                var comments = from s in DbContext.Comments where s.UserId == id select s;
+                return comments.ToList();
+            }
+            else 
+            {
+                var comments = from s in DbContext.Comments select s;
+                return comments.ToList();
+            }
+            
+        }
+
+
     }
 }

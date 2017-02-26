@@ -1,5 +1,5 @@
 ﻿@using System.Reflection
-@model MyOwnSite_0._01.Models.User
+@model System.Collections.IList
 
 
 @{
@@ -8,11 +8,20 @@
 
 <h2>Index</h2>
 
-@Html.DisplayFor(m => m.UserId)
-@Html.DisplayFor(m => m.Name)
-@Html.DisplayFor(m => m.Password)
-@Html.DisplayFor(m => m.Email)
+@*@Html.DisplayFor(m => m.UserId)
+@Html.DisplayFor(m => m.Message)
+@Html.DisplayFor(m => m.CreatedOn)
+@Html.DisplayFor(m => m.CommentId)*@
 
+
+@foreach (var part in Model)
+{
+    part.ToString();
+    Html.Display(part.ToString());
+}
+
+
+@*@foreach()*@
 
 
 

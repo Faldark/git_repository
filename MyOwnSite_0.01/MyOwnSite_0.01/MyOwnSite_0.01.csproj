@@ -167,6 +167,7 @@
     <Compile Include="DataAccess\PostDao.cs" />
     <Compile Include="DataAccess\UserDao.cs" />
     <Compile Include="ExcelExport\ExcelExportParams.cs" />
+    <Compile Include="ExcelExport\ExcelExportService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -38,5 +38,10 @@ namespace MyOwnSite_0._01.BusinessLogic
         {
             CommentDao.Delete(id);
         }
+
+        public List<Comment> GetCommentsByUser(int id)
+        {
+            return CommentDao.GetCommentsByUser(id);
+        }
     }
 }

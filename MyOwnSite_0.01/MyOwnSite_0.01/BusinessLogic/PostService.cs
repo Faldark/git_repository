@@ -54,6 +54,9 @@ namespace MyOwnSite_0._01.BusinessLogic
             PostDao.Delete(id);
         }
 
-
+        public List<Post> GetPostsByUser(int id)
+        {
+            return PostDao.GetPostsByUser(id);
+        }
     }
 }

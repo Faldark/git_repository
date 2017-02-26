@@ -50,5 +50,21 @@ namespace MyOwnSite_0._01.DataAccess
             }
         }
 
+        public List<Post> GetPostsByUser(int id)
+        {
+
+            if (id != 0)
+            {
+                var posts = from s in DbContext.Posts where s.UserId == id select s;
+                return posts.ToList();
+            }
+            else
+            {
+                var posts = from s in DbContext.Posts select s;
+                return posts.ToList();
+            }
+
+        }
+
     }
 }

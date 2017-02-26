@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
+using Microsoft.Practices.Unity;
+using MyOwnSite_0._01.BusinessLogic;
 using MyOwnSite_0._01.Models;
 
 namespace MyOwnSite_0._01.Controllers
@@ -14,13 +16,28 @@ namespace MyOwnSite_0._01.Controllers
     {
         private User user = new User();
 
+        [Dependency]
+        public IExportService ExportService { get; set; }
+
+
+
+
         //
         // GET: /Admin/
         public ActionResult Index()
         {
 
-            user = FillUserFromParams(Request.QueryString);
-            return View(user);
+            var result = ExportService.Export(Request.QueryString);
+
+            
+
+
+
+            //user = FillUserFromParams(Request.QueryString);
+
+            ViewBag.Result = result;
+
+            return View(result);
         }
 
         private User FillUserFromParams(NameValueCollection parameters)

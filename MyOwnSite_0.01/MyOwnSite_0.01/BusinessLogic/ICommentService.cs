@@ -16,6 +16,8 @@ namespace MyOwnSite_0._01.BusinessLogic
         void Update(Comment comment);
         void Delete(int id);
 
+        List<Comment> GetCommentsByUser(int id);
+
 
     }
 }

@@ -20,5 +20,8 @@ namespace MyOwnSite_0._01.DataAccess
 
         void Delete(int id);
 
+        List<Comment> GetCommentsByUser(int id);
+
+
     }
 }

@@ -43,7 +43,7 @@ namespace MyOwnSite_0._01.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
 
 
-
+            container.RegisterType<IExportService, ExportService>();
             container.RegisterType<ICommentDao, CommentDao>();
             container.RegisterType<ICommentService, CommentService>();
             container.RegisterType<IPostDao, PostDao>();
