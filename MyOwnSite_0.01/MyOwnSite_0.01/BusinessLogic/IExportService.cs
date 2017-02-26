@@ -14,7 +14,7 @@ namespace MyOwnSite_0._01.BusinessLogic
     public interface IExportService
     {
 
-        IList Export(NameValueCollection parameters);
+        IEnumerable Export(NameValueCollection parameters);
 
         //ExcelExportParams ExtractParams(NameValueCollection parameters);
 

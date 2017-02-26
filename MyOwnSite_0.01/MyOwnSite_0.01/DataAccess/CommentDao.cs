@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc.Html;
+using System.Web.Services.Description;
 using Microsoft.Practices.Unity;
 using MyOwnSite_0._01.Interfaces;
 using MyOwnSite_0._01.Models;
@@ -65,6 +66,8 @@ namespace MyOwnSite_0._01.DataAccess
             else 
             {
                 var comments = from s in DbContext.Comments select s;
+
+               
                 return comments.ToList();
             }
             

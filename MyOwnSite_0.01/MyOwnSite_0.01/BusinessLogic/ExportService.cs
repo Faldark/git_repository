@@ -18,7 +18,7 @@ namespace MyOwnSite_0._01.BusinessLogic
         public ICommentService CommentService { get; set; }
 
 
-        public IList Export(NameValueCollection parameters)
+        public IEnumerable Export(NameValueCollection parameters)
         {
             var exportParameters = ExtractParams(parameters);
             return CollectData(exportParameters);
@@ -49,7 +49,7 @@ namespace MyOwnSite_0._01.BusinessLogic
             return settings;
         }
 
-        private IList CollectData(ExcelExportParams parameters)
+        private IEnumerable CollectData(ExcelExportParams parameters)
         {
 
             if (parameters.Export == "comments")

@@ -103,3 +103,5 @@ C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\bin\System.Web.Web
 C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\obj\Debug\MyOwnSite_0.01.csprojResolveAssemblyReference.cache
 C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\obj\Debug\MyOwnSite_0.01.dll
 C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\obj\Debug\MyOwnSite_0.01.pdb
+C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\bin\EPPlus.dll
+C:\Users\Faldark\git_repository\MyOwnSite_0.01\MyOwnSite_0.01\bin\EPPlus.xml

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.EnterpriseServices.Internal;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -9,6 +11,7 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using MyOwnSite_0._01.BusinessLogic;
 using MyOwnSite_0._01.Models;
+using OfficeOpenXml;
 
 namespace MyOwnSite_0._01.Controllers
 {
@@ -26,19 +29,44 @@ namespace MyOwnSite_0._01.Controllers
         // GET: /Admin/
         public ActionResult Index()
         {
-
+            ExcelPackage excel = new ExcelPackage();
+            var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
             var result = ExportService.Export(Request.QueryString);
+            
+            List<Comment> comments = result as List<Comment>;
+            if (comments != null)
+            {
+                workSheet.Cells[1, 1].LoadFromCollection(comments, true);
+            }
+            List<Post> posts = result as List<Post>;
+            if (posts != null)
+            {
+                workSheet.Cells[1, 1].LoadFromCollection(posts, true);
+            }
 
             
+            //ExcelPackage excel = new ExcelPackage();
+            //var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
+            //workSheet.Cells[1, 1].LoadFromCollection(result, true);
+            using (var memoryStream = new MemoryStream())
+            {
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;  filename=Contact.xlsx");
+                excel.SaveAs(memoryStream);
+                memoryStream.WriteTo(Response.OutputStream);
+                Response.Flush();
+                Response.End();
+                
 
-
+            }
 
             //user = FillUserFromParams(Request.QueryString);
 
-            ViewBag.Result = result;
+               
 
-            return View(result);
-        }
+                return View();
+            }
+        
 
         private User FillUserFromParams(NameValueCollection parameters)
         {
